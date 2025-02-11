@@ -1,0 +1,54 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+    <h2>Criar novo evento</h2>
+
+    <form action="{% url 'events:create_event_post' %}" method="post">
+    {% csrf_token %}
+        
+        <fieldset>
+            Eventos
+        
+        <div>
+            <label for="name">Nome do evento </label>
+            <input type="text" name="name" id="name" placeholder="nome do evento" required>
+        </div>
+        
+        <div>
+            <label for="address">Endereco</label>
+            <input type="text" name="address" id="address" placeholder="endereco do evento" required>
+        </div>
+
+        <div>
+            <label for="date">Quando vai ser</label>
+            <input type="date" name="date" id="date" required>
+        </div>
+        
+        <div>
+            <label for="quantity-tickets">Quantidade de Ingressos</label>
+            <input type="number" name="quantity-tickets" id="quantity-tickets" placeholder="Quantidade de ingresos" required>
+        </div>
+
+        <div>
+            <label for="categories">Escolha as categorias</label>
+            <select name="categories">
+                {% for category in categories %}
+                    <option>{{category.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div>
+            <label for="description">Descricao do evento</label>
+            <textarea name="description" id=""></textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="Criar">
+        </div>
+
+    </fieldset>
+
+    </form>
+
+{% endblock %}

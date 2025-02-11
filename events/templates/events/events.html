@@ -1,15 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events Page</title>
-</head>
-<body>
-    <h1>In this Page you can see a list of events available</h1>
-    {% for event in events %}
-        <li>{{event.title}}</li>
-    {% endfor %}
-    <p>No events...</p>
-</body>
-</html>
+{% extends "events/base.html" %}
+
+{% block content %}
+    <h2>Lista de eventos disponiveis</h2>
+
+    {% if events %}
+        <div>
+            <ul>
+                {% for event in events %}
+                    <li>
+                        <h1>{{ event.title }}</h1>
+                        <p>{{ event.description }}</p>
+                        <p>Quando: {{event.date}}</p>
+                        <p>Local: {{event.address}}</p>
+                        <p>Descricao: {{event.description}}</p>
+                        
+                        {% for category in event.categories.all %}
+                            <span> {{category.name}}</span>
+                        {% endfor %}
+
+                        <a>Ver Detalhes</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    
+    {% else %}
+        <b><h3>Nenhum evento novo....</h3></b>
+    {% endif %}
+
+{% endblock %}

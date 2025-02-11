@@ -10,6 +10,9 @@ class Category(models.Model):
 
     name = models.CharField(200)
 
+    def __str__(self):
+        return self.name;
+
 class Event(models.Model):
 
     class Meta:

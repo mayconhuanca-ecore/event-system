@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event System</title>
+</head>
+<body>
+    <header>
+        <h1>Eventos 2000</h1>
+        <nav>
+            <a href="/events/eventos">Eventos</a>
+            <a href="{% url 'events:create_event' %}">Criar novo evento</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+
+    <footer>
+        footer
+    </footer>
+</body>
+</html>
