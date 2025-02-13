@@ -1,0 +1,17 @@
+{% extends "events/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1>Obrigado por comprar o ingresso</h1>
+<h2>para o evento: {{event.title}}</h2>
+<img src="{% static 'img/minions.webp' %}" alt="how the dev react when you use his app">
+<p>Endereco: {{event.address}}</p>
+<p>Nao percao o horario: {{event.date}}</p>
+
+<h2>O Codigo do seu ticket eh {{ticket.code}}</h2>
+<p>voce pode ver os seus ticekt na pagina </p>
+
+<a href="{% url 'events:index'%}">Voltar aos eventos</a>
+
+{% endblock %}}

@@ -1,4 +1,5 @@
 {% extends "events/base.html" %}
+{% load static %}
 
 {% block content %}
     <h2>Detalhes: {{event.title}}</h2>
@@ -6,9 +7,23 @@
     <p>Local Do Evento: {{event.address}}</p>
     <p>Hora: {{event.date}}</p>
     <p>Ingressos disponiveis: {{event.number_ticket}} tickets</p>
+    
+    <img src="{% static 'img/sonic.jpg' %}" alt="Sonic mad" width="400" height="200">
+
     <p>Description: {{event.description}}</p>
 
-    <button type="button" class="btn btn-primary">Comprar Ingresso</button>
-    <button type="button" class="btn btn-warning">Me Avise</button>
+    {% if can_buy %}
+        {% if event.date_release_tickets > current_date %}
+            <p>Os ingressos ainda nao estao disponiveis para venda</p>
+            <a class="btn btn-warning">Me Avise</a>
+        {% else %}
+            <a href="{% url 'events:buy_ticket' event.id %}" class="btn btn-primary">Comprar Ingresso</a>
+        {% endif %}
+    {% else %}
+        <p>Ingressos esgotados</p>
+    {% endif %}
+
+
+
 
 {% endblock %}

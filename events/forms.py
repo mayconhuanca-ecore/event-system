@@ -11,11 +11,19 @@ class CreateEventForm(forms.Form):
     address = forms.CharField(label="Endereco")
     date = forms.DateField(
         widget=forms.DateInput(attrs={
-            'type':'date',
-            'max': datetime.now().date()
+            'type':'date'
         }),
         label="Data do evento"
     )
+
+    date_release_tickets = forms.DateField(
+        widget=forms.DateInput(attrs={
+            'type': 'date'
+        }),
+        label="Data de compra dos Ingressos",
+        required=False 
+    )
+
     quantity = forms.IntegerField(label="Quantidade de Ingressos")
     categories = forms.ChoiceField(choices=[], label="Escolha uma categoria")
     description = forms.CharField(

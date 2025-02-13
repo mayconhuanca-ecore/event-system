@@ -1,0 +1,13 @@
+{% extends "events/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Infelizmente os ingressos para o Evento: {{event.title}} esgotaram</h1>
+    
+    <h2>Voce ficou indecisso e demorou muito para comprar seu ingresso e eles fugiram</h2>
+    <p>ou esgotaram</p>
+
+    <img src="{% static 'img/button.jpg' %}" alt="os ingressos acabaram" width="300px">
+
+    <p>mas nao se preocupe voce ainda pode participar de outros eventos <a href="{% url 'events:index' %}">aqui</a></p>
+{% endblock %}
