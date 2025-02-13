@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Event, Category
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -13,7 +13,7 @@ def events_page(request):
     return render(request, "events/events.html", {"events": events_list})
 
 def create_event(request):
-    
+
     categories = Category.objects.all()
 
     if request.method == "POST":
@@ -61,3 +61,12 @@ def create_event(request):
         return render(request, "events/create-event.html", context)
 
     return events_page(request);
+
+def event_detail(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+
+    context = { 
+        "event": event
+    }
+
+    return render(request, "events/detail.html", context)

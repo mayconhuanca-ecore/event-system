@@ -1,0 +1,14 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+    <h2>Detalhes: {{event.title}}</h2>
+
+    <p>Local Do Evento: {{event.address}}</p>
+    <p>Hora: {{event.date}}</p>
+    <p>Ingressos disponiveis: {{event.number_ticket}} tickets</p>
+    <p>Description: {{event.description}}</p>
+
+    <button type="button" class="btn btn-primary">Comprar Ingresso</button>
+    <button type="button" class="btn btn-warning">Me Avise</button>
+
+{% endblock %}

@@ -20,7 +20,7 @@
                         
                         <br/>
 
-                        <a>Ver Detalhes</a>
+                        <a href="{% url 'events:event_details' event.id %}">Ver Detalhes</a>
                     </li>
                 {% endfor %}
             </ul>
