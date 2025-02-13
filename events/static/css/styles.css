@@ -1,0 +1,8 @@
+body {
+    padding: 20px;
+}
+
+.centralize {
+    width: fit-content;
+    margin: 0 auto;
+}

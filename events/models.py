@@ -27,8 +27,9 @@ class Event(models.Model):
     categories = models.ManyToManyField(Category, related_name="events")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="events")
 
-    def __str___(self):
+    def __str__(self):
         return self.title
+
 
 class Registration(models.Model):
 
