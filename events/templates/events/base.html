@@ -15,7 +15,21 @@
         <h1>Eventos 2000</h1>
         <nav>
             <a href="{% url 'events:index' %}">Eventos</a>
-            <a href="{% url 'events:create_event' %}">Criar novo evento</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'events:create_event' %}">Criar novo evento</a>
+            {% endif %}
+            |
+            
+            {% if user.is_authenticated %}
+                <a href="{% url 'events:logout' %}" class="btn">LOGOUT</a>
+            {% else %}
+                <a href="{% url 'events:login' %}" class="btn">LOGIN</a>
+            {% endif %}
+        
+            {% if not user.is_authenticated %}
+                <a href="{% url 'events:signup' %}" class="btn">SE CADASTRAR</a>
+            {% endif %}
         </nav>
     </header>
 
